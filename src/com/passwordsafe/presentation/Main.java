@@ -1,6 +1,8 @@
-package com.passwordsafe;
-
-import at.lecture.singleton.Logger;
+package com.passwordsafe.presentation;
+import com.passwordsafe.logic.PasswordSafeEngine;
+import com.passwordsafe.logic.CipherFacility;
+import com.passwordsafe.data.MasterPasswordRepository;
+import com.passwordsafe.data.PasswordInfo;
 
 import java.io.File;
 import java.util.Arrays;
@@ -29,7 +31,7 @@ public class Main {
                     String masterPw = read.next();
                     locked = !masterRepository.MasterPasswordIsEqualTo(masterPw);
                     if (!locked) {
-                        passwordSafeEngine = new PasswordSafeEngine("./passwords.pw", new CipherFacility(masterPw));
+                        passwordSafeEngine = new PasswordSafeEngine("./passwords.pw", CipherFacility.getInst(masterPw));
                         System.out.println("unlocked");
                     } else {
                         System.out.println("master password did not match ! Failed to unlock.");

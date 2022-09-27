@@ -1,5 +1,7 @@
-package com.passwordsafe;;
+package com.passwordsafe.logic;;
 import at.lecture.singleton.Logger;
+import com.passwordsafe.data.PasswordInfo;
+import com.passwordsafe.logic.CipherFacility;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;

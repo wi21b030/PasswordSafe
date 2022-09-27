@@ -1,4 +1,4 @@
-package com.passwordsafe;
+package com.passwordsafe.data;
 
 import at.lecture.singleton.Logger;
 

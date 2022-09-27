@@ -1,4 +1,4 @@
-package com.passwordsafe;;
+package com.passwordsafe.data;;
 
 public class PasswordInfo {
     private String plain;

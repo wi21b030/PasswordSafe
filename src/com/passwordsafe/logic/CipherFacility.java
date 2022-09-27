@@ -1,4 +1,4 @@
-package com.passwordsafe;
+package com.passwordsafe.logic;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -16,8 +16,14 @@ import java.util.stream.Collectors;
 
 public class CipherFacility {
     private final String key;
-    CipherFacility(String key) {
+    private static CipherFacility inst = new CipherFacility(null);
+    private CipherFacility(String key) {
         this.key = key;
+    }
+
+    public static CipherFacility getInst(String key){
+        CipherFacility in = new CipherFacility(key);
+        return in;
     }
     public String Decrypt(String crypted) throws NoSuchPaddingException, NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         Cipher cipher = Cipher.getInstance("AES");
