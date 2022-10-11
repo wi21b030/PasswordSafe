@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class PasswordCheck {
     public void hasBeenPawned(String pw) throws NoSuchAlgorithmException, IOException, URISyntaxException, InterruptedException {
-        //hash the String pw
+        //hash the String pw (found code on StackOverflow)
         MessageDigest digest = MessageDigest.getInstance("SHA-1");
         digest.reset();
         digest.update(pw.getBytes(StandardCharsets.UTF_8));
