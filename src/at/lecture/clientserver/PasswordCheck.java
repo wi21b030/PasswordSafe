@@ -19,18 +19,16 @@ public class PasswordCheck {
         String sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
         HttpRequest request = HttpRequest.newBuilder().uri(new URI("https://api.pwnedpasswords.com/range/" + sha1.substring(0,5))).GET().build();
         HttpResponse<String> response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-        if(!response.body().contains(sha1.substring(5).toUpperCase())){
+        String res = response.body();
+        if(!res.contains(sha1.substring(5).toUpperCase())){
             System.out.println("Password has not been pawned");
         }
         else{
-            String res = response.body();
-            String[] result;
-            int actRes;
+            String[] pawned;
             for (String row : res.split(System.lineSeparator())) {
                 if(row.contains(sha1.substring(5).toUpperCase())){
-                    result = row.split(":");
-                    actRes = Integer.parseInt(result[1]);
-                    System.out.print("Password has been pawned " + actRes + " times!");
+                    pawned = row.split(":");
+                    System.out.print("Password has been pawned " + pawned[1] + " times!");
                 }
             }
         }

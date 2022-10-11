@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         PasswordCheck pc = new PasswordCheck();
         try {
-            pc.hasBeenPawned("password");
+            pc.hasBeenPawned("abc");
         } catch (NoSuchAlgorithmException | URISyntaxException | IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
